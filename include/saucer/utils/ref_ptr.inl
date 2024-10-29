@@ -6,7 +6,6 @@
 
 namespace saucer::utils
 {
-
     template <typename T, auto Ref, auto Unref>
     template <auto Action>
     T *ref_ptr<T, Ref, Unref>::perform(T *ptr)

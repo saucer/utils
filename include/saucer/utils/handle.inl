@@ -7,9 +7,7 @@
 namespace saucer::utils
 {
     template <typename T, auto Release, T Empty>
-    handle<T, Release, Empty>::handle() : m_handle(Empty)
-    {
-    }
+    handle<T, Release, Empty>::handle() = default;
 
     template <typename T, auto Release, T Empty>
     handle<T, Release, Empty>::handle(T handle) : m_handle(std::move(handle))
@@ -45,14 +43,14 @@ namespace saucer::utils
     }
 
     template <typename T, auto Release, T Empty>
-    T &handle<T, Release, Empty>::reset(T other)
+    T &handle<T, Release, Empty>::reset(T handle)
     {
         if (m_handle != Empty)
         {
             Release(m_handle);
         }
 
-        m_handle = std::move(other);
+        m_handle = std::move(handle);
 
         return m_handle;
     }

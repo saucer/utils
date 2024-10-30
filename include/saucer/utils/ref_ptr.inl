@@ -19,9 +19,7 @@ namespace saucer::utils
     }
 
     template <typename T, auto Ref, auto Unref>
-    ref_ptr<T, Ref, Unref>::ref_ptr() : m_ptr(nullptr)
-    {
-    }
+    ref_ptr<T, Ref, Unref>::ref_ptr() = default;
 
     template <typename T, auto Ref, auto Unref>
     ref_ptr<T, Ref, Unref>::ref_ptr(T *ptr) : m_ptr(ptr)
@@ -79,10 +77,10 @@ namespace saucer::utils
     }
 
     template <typename T, auto Ref, auto Unref>
-    void ref_ptr<T, Ref, Unref>::reset(T *other)
+    void ref_ptr<T, Ref, Unref>::reset(T *ptr)
     {
         perform<Unref>(m_ptr);
-        m_ptr = other;
+        m_ptr = ptr;
     }
 
     template <typename T, auto Ref, auto Unref>

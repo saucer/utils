@@ -56,11 +56,7 @@ namespace saucer::utils
     template <typename T, auto Ref, auto Unref>
     ref_ptr<T, Ref, Unref> &ref_ptr<T, Ref, Unref>::operator=(ref_ptr &&other) noexcept
     {
-        if (this != &other)
-        {
-            reset(std::exchange(other.m_ptr, nullptr));
-        }
-
+        std::swap(m_ptr, other.m_ptr);
         return *this;
     }
 

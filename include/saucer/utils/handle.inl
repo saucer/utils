@@ -28,11 +28,7 @@ namespace saucer::utils
     template <typename T, auto Release, T Empty>
     handle<T, Release, Empty> &handle<T, Release, Empty>::operator=(handle &&other) noexcept
     {
-        if (this != &other)
-        {
-            reset(std::exchange(other.m_handle, Empty));
-        }
-
+        std::swap(m_handle, other.m_handle);
         return *this;
     }
 

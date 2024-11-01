@@ -1,0 +1,6 @@
+#pragma once
+
+#include <boost/preprocessor.hpp>
+
+#define SAUCER_INSTANTIATE_IMPL(_, N, DATA) DATA(N)
+#define SAUCER_INSTANTIATE(COUNT, CODE) BOOST_PP_REPEAT(COUNT, SAUCER_INSTANTIATE_IMPL, CODE)
